@@ -118,7 +118,10 @@
                                   success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     __block NSURLSessionDataTask *dataTask = nil;
-    dataTask = [self dataTaskWithRequest:request completionHandler:^(NSURLResponse * __unused response, id responseObject, NSError *error) {
+    dataTask = [self dataTaskWithRequest:request
+               uploadProgress:nil
+             downloadProgress:nil
+            completionHandler:^(NSURLResponse * __unused response, id  responseObject, NSError *error) {
         if (error) {
             if (failure) {
                 failure(dataTask, error);
